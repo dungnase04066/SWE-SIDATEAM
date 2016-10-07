@@ -6,6 +6,7 @@
 package com.sida.mybudget.gui;
 
 import com.sida.mybudget.bo.BGToolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -52,7 +53,20 @@ public class ForgotPassword extends javax.swing.JDialog {
 
         lbEmail.setText("Email");
 
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ForgotPassword.this.keyPressed(evt);
+            }
+        });
+
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ForgotPassword.this.keyPressed(evt);
+            }
+        });
+
         btnOK.setText("OK");
+        btnOK.setFocusable(false);
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOKActionPerformed(evt);
@@ -60,6 +74,7 @@ public class ForgotPassword extends javax.swing.JDialog {
         });
 
         btnClose.setText("Close");
+        btnClose.setFocusable(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -135,6 +150,14 @@ public class ForgotPassword extends javax.swing.JDialog {
         String mess = BGToolkit.HTTPPostRequest("http://anhdung.net/swe/forgotpass.php","pass=dungdeptrai&email="+email+"&user="+user);
         JOptionPane.showMessageDialog(null, mess);
     }//GEN-LAST:event_btnOKActionPerformed
+
+    private void keyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            btnOKActionPerformed(null);
+        }else if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
+            btnCloseActionPerformed(null);
+        }
+    }//GEN-LAST:event_keyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
