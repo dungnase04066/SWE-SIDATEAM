@@ -7,10 +7,14 @@ package com.sida.mybudget.gui;
 
 import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.Data;
+import com.sida.mybudget.dao.LoginDAO;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,13 +26,10 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    private Connection conn;
-
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Login");
-        conn = Data.getConn();
     }
 
     /**
@@ -50,7 +51,7 @@ public class Login extends javax.swing.JFrame {
         lbForgotPass = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/logo.png"))); // NOI18N
@@ -58,6 +59,18 @@ public class Login extends javax.swing.JFrame {
         lbUser.setText("Username");
 
         lbPass.setText("Password");
+
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Login.this.keyPressed(evt);
+            }
+        });
+
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Login.this.keyPressed(evt);
+            }
+        });
 
         btnLogin.setText("Login");
         btnLogin.setFocusable(false);
@@ -142,26 +155,31 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String user = txtUser.getText().trim();
+        String pass = String.valueOf(txtPass.getPassword()).trim();
+        boolean login;
         try {
-            String user = txtUser.getText().trim();
-            String pass = BGToolkit.md5(txtPass.getText().trim());
-            PreparedStatement sql = conn.prepareStatement("SELECT * FROM users WHERE user=? AND pass=?");
-            sql.setString(1, user);
-            sql.setString(2, pass);
-            ResultSet rs = sql.executeQuery();
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Show main menu", "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(null, "Username or Password is incorect! ", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            login = LoginDAO.checkAccount(user, pass);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Can't connect to server", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (login) {
+            System.out.println(" show main menu");
+        }else{
+            JOptionPane.showMessageDialog(null, "Username or Password is incorect! ", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void lbForgotPassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbForgotPassMousePressed
         new ForgotPassword();
     }//GEN-LAST:event_lbForgotPassMousePressed
+
+    private void keyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            btnLoginActionPerformed(null);
+        }
+    }//GEN-LAST:event_keyPressed
 
     /**
      * @param args the command line arguments
@@ -180,7 +198,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            
+
         }
         //</editor-fold>
         /* Create and display the form */
