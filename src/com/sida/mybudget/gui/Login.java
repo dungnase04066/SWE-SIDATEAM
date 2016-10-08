@@ -82,6 +82,11 @@ public class Login extends javax.swing.JFrame {
 
         btnRegister.setText("Register");
         btnRegister.setFocusable(false);
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         lbForgotPass.setText("Forgot your password?");
         lbForgotPass.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,6 +185,10 @@ public class Login extends javax.swing.JFrame {
             btnLoginActionPerformed(null);
         }
     }//GEN-LAST:event_keyPressed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        new Register();
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments

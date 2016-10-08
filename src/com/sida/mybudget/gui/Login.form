@@ -137,6 +137,9 @@
         <Property name="text" type="java.lang.String" value="Register"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbForgotPass">
       <Properties>

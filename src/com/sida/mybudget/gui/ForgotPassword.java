@@ -19,10 +19,11 @@ public class ForgotPassword extends javax.swing.JDialog {
      * Creates new form ForgotPassword
      */
     public ForgotPassword() {
+        setModal(true);
+        setTitle("Forgot password");
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
-        setTitle("Forgot password");
     }
 
     /**
