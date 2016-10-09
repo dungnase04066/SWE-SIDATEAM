@@ -5,7 +5,12 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.dao.RegisterDAO;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +38,7 @@ public class Register extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgGender = new javax.swing.ButtonGroup();
         lbName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         lbUser = new javax.swing.JLabel();
@@ -47,6 +53,9 @@ public class Register extends javax.swing.JDialog {
         txtPass = new javax.swing.JPasswordField();
         txtRePass = new javax.swing.JPasswordField();
         lbTitle = new javax.swing.JLabel();
+        rbtMale = new javax.swing.JRadioButton();
+        rbtFemale = new javax.swing.JRadioButton();
+        lbGender = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -118,6 +127,15 @@ public class Register extends javax.swing.JDialog {
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("Register");
 
+        btgGender.add(rbtMale);
+        rbtMale.setSelected(true);
+        rbtMale.setText("Male");
+
+        btgGender.add(rbtFemale);
+        rbtFemale.setText("Female");
+
+        lbGender.setText("Gender");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,9 +163,16 @@ public class Register extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPass)
-                            .addComponent(txtRePass))))
+                            .addComponent(txtRePass)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbGender)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rbtMale)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtFemale)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -160,7 +185,11 @@ public class Register extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rbtMale)
+                        .addComponent(rbtFemale)
+                        .addComponent(lbGender)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbUser)
@@ -181,7 +210,7 @@ public class Register extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,22 +228,43 @@ public class Register extends javax.swing.JDialog {
     }//GEN-LAST:event_keyPress
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        
+        String name = txtName.getText();
+        String user = txtUser.getText();
+        String email = txtEmail.getText();
+        String pass = String.valueOf(txtPass.getPassword());
+        int gender = rbtMale.isSelected() ? 1 : 0;
+        boolean register = false;
+        try {
+            register = RegisterDAO.Register(name, user, email, pass, gender);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if(register){
+            JOptionPane.showMessageDialog(null, "Registration successful!", "Error",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgGender;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
     private javax.swing.JLabel lbEmail;
+    private javax.swing.JLabel lbGender;
     private javax.swing.JLabel lbName;
     private javax.swing.JLabel lbPass;
     private javax.swing.JLabel lbRePass;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JLabel lbUser;
     private javax.swing.JLabel logo;
+    private javax.swing.JRadioButton rbtFemale;
+    private javax.swing.JRadioButton rbtMale;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPass;

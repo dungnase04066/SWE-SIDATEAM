@@ -5,16 +5,9 @@
  */
 package com.sida.mybudget.gui;
 
-import com.sida.mybudget.bo.BGToolkit;
-import com.sida.mybudget.dao.Data;
 import com.sida.mybudget.dao.LoginDAO;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -166,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         try {
             login = LoginDAO.checkAccount(user, pass);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Can't connect to server", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         if (login) {
