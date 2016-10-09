@@ -14,6 +14,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.xml.bind.DatatypeConverter;
 
 /**
@@ -74,4 +76,117 @@ public class BGToolkit {
             return null;
         }
     }
+
+    /**
+     *
+     * @param name
+     * @return Check name:name have only character.
+     */
+    public static boolean checkName(String name) {
+        name = name.trim();
+        if (name.equals("")) {
+            return false;
+        }
+        if (!name.matches("[a-zA-Z ]{0,50}")) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * username have only character, number, not special character
+     *
+     * @param username
+     * @return
+     */
+    public static boolean checkUsername(String username) {
+        username = username.trim().toLowerCase();
+        if (username.equals("")) {
+            return false;
+        }
+        if (!username.matches("[a-zA-Z0-9]{0,50}")) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Upper first character in word after space
+     *
+     * @param name
+     * @return
+     */
+    public static String formatName(String name) {
+        name = name.trim();
+        String[] names = name.replaceAll("\\s+", " ").toLowerCase().split(" ");
+        name = "";
+        for (String name1 : names) {
+            name1 = Character.toUpperCase(name1.charAt(0)) + name1.substring(1);
+            name += " " + name1;
+        }
+        name = name.trim();
+        return name;
+    }
+
+    /**
+     * Input: day/month/year Check date:
+     *
+     * @param date
+     * @return
+     */
+    public static boolean checkDate(String date) {
+        date = date.trim();
+        if (!date.matches("[0-9]{2}+/+[0-9]{2}+/+[0-9]{4}")) {
+            return false;
+        }
+        if (date.equals("")) {
+            return false;
+        }
+        SimpleDateFormat sdm = new SimpleDateFormat("dd/MM/yyyy");
+        sdm.setLenient(false);
+        try {
+            Date datetmp = sdm.parse(date);
+            if (datetmp.compareTo(new Date()) > -1) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 
+     * @param mail
+     * @return 
+     */
+    public static boolean checkMail(String mail) {
+        mail = mail.trim();
+        if (mail.equals("")) {
+            return false;
+        }
+        if (!mail.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$")) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    /**
+     * 
+     * @param pass1: new pass
+     * @param pass2 : re-enter pass
+     * @return 
+     */
+    public static boolean checkPassword(String pass1, String pass2) {
+        if (pass1.length() < 6) {
+            return false;
+        }
+        if (!pass1.equals(pass2)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
