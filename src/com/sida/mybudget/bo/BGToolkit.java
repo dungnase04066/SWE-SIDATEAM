@@ -26,7 +26,6 @@ public class BGToolkit {
 
     public static String HTTPPostRequest(String targetURL, String urlParameters) {
         HttpURLConnection connection = null;
-
         try {
             //Create connection
             URL url = new URL(targetURL);
@@ -83,7 +82,6 @@ public class BGToolkit {
      * @return Check name:name have only character.
      */
     public static boolean checkName(String name) {
-        name = name.trim();
         if (name.equals("")) {
             return false;
         }
@@ -100,7 +98,6 @@ public class BGToolkit {
      * @return
      */
     public static boolean checkUsername(String username) {
-        username = username.trim().toLowerCase();
         if (username.equals("")) {
             return false;
         }
@@ -117,7 +114,6 @@ public class BGToolkit {
      * @return
      */
     public static String formatName(String name) {
-        name = name.trim();
         String[] names = name.replaceAll("\\s+", " ").toLowerCase().split(" ");
         name = "";
         for (String name1 : names) {
@@ -135,7 +131,6 @@ public class BGToolkit {
      * @return
      */
     public static boolean checkDate(String date) {
-        date = date.trim();
         if (!date.matches("[0-9]{2}+/+[0-9]{2}+/+[0-9]{4}")) {
             return false;
         }
@@ -156,12 +151,11 @@ public class BGToolkit {
     }
 
     /**
-     * 
+     *
      * @param mail
-     * @return 
+     * @return
      */
     public static boolean checkMail(String mail) {
-        mail = mail.trim();
         if (mail.equals("")) {
             return false;
         }
@@ -171,12 +165,11 @@ public class BGToolkit {
         return true;
     }
 
-    
     /**
-     * 
+     *
      * @param pass1: new pass
      * @param pass2 : re-enter pass
-     * @return 
+     * @return
      */
     public static boolean checkPassword(String pass1, String pass2) {
         if (pass1.length() < 6) {
@@ -187,6 +180,5 @@ public class BGToolkit {
         }
         return true;
     }
-    
-    
+
 }

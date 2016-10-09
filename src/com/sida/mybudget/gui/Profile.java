@@ -5,10 +5,9 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.Data;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -219,11 +218,28 @@ public class Profile extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        String name = txtName.getText();
-        String email = txtEmail.getText();
-        String newPass = String.valueOf(txtNewPass.getPassword());
-        String reNewPass = String.valueOf(txtReNewPass.getPassword());
-        String currentPass = String.valueOf(txtCurrentPass.getPassword());
+        String name = BGToolkit.formatName(txtName.getText().trim());
+        String email = txtEmail.getText().trim().toLowerCase();
+        String newPass = String.valueOf(txtNewPass.getPassword()).trim();
+        String reNewPass = String.valueOf(txtReNewPass.getPassword()).trim();
+        String currentPass = String.valueOf(txtCurrentPass.getPassword()).trim();
+
+        if (!BGToolkit.checkName(name)) {
+            JOptionPane.showMessageDialog(null, "Please, enter again! Name has only character.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!BGToolkit.checkMail(email)) {
+            JOptionPane.showMessageDialog(null, "Please, enter again! Mail format incorrect.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!(newPass.equals("") && reNewPass.equals(""))) {
+            if (!BGToolkit.checkPassword(newPass, reNewPass)) {
+                JOptionPane.showMessageDialog(null, "Please, enter again! new password has less 6 character and new password, re-newpassword matches", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
         boolean gender = rbtMale.isSelected();
         boolean update = false;
         try {

@@ -238,7 +238,7 @@ public class Register extends javax.swing.JDialog {
         int gender = rbtMale.isSelected() ? 1 : 0;
 
         if (!bgtTookit.checkName(name)) {
-            JOptionPane.showMessageDialog(null, "Please, enter again! Name has only character, number.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please, enter again! Name has only character.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
