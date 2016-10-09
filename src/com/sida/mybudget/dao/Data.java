@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.dao;
 
+import com.sida.mybudget.entity.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,6 +18,15 @@ import javax.swing.JOptionPane;
 public class Data {
 
     private static Connection conn;
+    private static User user;
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        Data.user = user;
+    }
 
     public static Connection getConn() {
         return conn;
