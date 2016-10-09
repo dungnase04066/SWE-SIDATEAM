@@ -51,16 +51,27 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2.setText("My Budget");
 
         btnReport.setText("Report");
+        btnReport.setFocusable(false);
 
         btnRecord.setText("Record");
+        btnRecord.setFocusable(false);
 
         btnNew.setText("New");
+        btnNew.setFocusable(false);
 
         btnProfile.setText("Profile");
+        btnProfile.setFocusable(false);
+        btnProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfileActionPerformed(evt);
+            }
+        });
 
         btnFeedback.setText("Feedback");
+        btnFeedback.setFocusable(false);
 
         btnExit.setText("Exit");
+        btnExit.setFocusable(false);
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -139,6 +150,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
+        new Profile();
+    }//GEN-LAST:event_btnProfileActionPerformed
 
     /**
      * @param args the command line arguments

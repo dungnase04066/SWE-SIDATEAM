@@ -234,26 +234,26 @@ public class Register extends javax.swing.JDialog {
         String user = txtUser.getText().trim().toLowerCase();
         String email = txtEmail.getText().trim().toLowerCase();
         String pass = String.valueOf(txtPass.getPassword()).trim();
-        String repass =  String.valueOf(txtRePass.getPassword()).trim();
+        String repass = String.valueOf(txtRePass.getPassword()).trim();
         int gender = rbtMale.isSelected() ? 1 : 0;
 
         if (!bgtTookit.checkName(name)) {
-            JOptionPane.showMessageDialog(null, "Please, enter again! Name has only character, number.","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please, enter again! Name has only character, number.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         if (!bgtTookit.checkUsername(user)) {
-            JOptionPane.showMessageDialog(null, "Please, enter again! Username has only character, number.","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please, enter again! Username has only character, number.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        if(!bgtTookit.checkMail(email)){
-            JOptionPane.showMessageDialog(null, "Please, enter again! Mail format incorrect.","Error", JOptionPane.ERROR_MESSAGE);
+
+        if (!bgtTookit.checkMail(email)) {
+            JOptionPane.showMessageDialog(null, "Please, enter again! Mail format incorrect.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        if(!bgtTookit.checkPassword(pass, repass)){
-            JOptionPane.showMessageDialog(null, "Please, enter again! password has less 6 character and password, repassword matches","Error", JOptionPane.ERROR_MESSAGE);
+
+        if (!bgtTookit.checkPassword(pass, repass)) {
+            JOptionPane.showMessageDialog(null, "Please, enter again! password has less 6 character and password, repassword matches", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         boolean register = false;
@@ -261,8 +261,10 @@ public class Register extends javax.swing.JDialog {
             register = RegisterDAO.Register(name, user, email, pass, gender);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         if (register) {
             JOptionPane.showMessageDialog(null, "Registration successful!", "Error", JOptionPane.INFORMATION_MESSAGE);
