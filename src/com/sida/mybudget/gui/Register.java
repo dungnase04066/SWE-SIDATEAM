@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.RegisterDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -21,6 +22,8 @@ public class Register extends javax.swing.JDialog {
     /**
      * Creates new form Register
      */
+    BGToolkit bgtTookit = new BGToolkit();
+
     public Register() {
         initComponents();
         setModal(true);
@@ -143,7 +146,7 @@ public class Register extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(136, 136, 136)
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -183,13 +186,14 @@ public class Register extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rbtMale)
                         .addComponent(rbtFemale)
-                        .addComponent(lbGender)))
+                        .addComponent(lbGender))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbName)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbUser)
@@ -232,7 +236,28 @@ public class Register extends javax.swing.JDialog {
         String user = txtUser.getText();
         String email = txtEmail.getText();
         String pass = String.valueOf(txtPass.getPassword());
+        String repass =  String.valueOf(txtRePass.getPassword());
         int gender = rbtMale.isSelected() ? 1 : 0;
+
+        if (!bgtTookit.checkName(name)) {
+            JOptionPane.showMessageDialog(null, "Please, enter again! Name has only character, number.","Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!bgtTookit.checkUsername(user)) {
+            JOptionPane.showMessageDialog(null, "Please, enter again! Username has only character, number.","Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(!bgtTookit.checkMail(email)){
+            JOptionPane.showMessageDialog(null, "Please, enter again! Mail format incorrect.","Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(!bgtTookit.checkPassword(pass, repass)){
+            JOptionPane.showMessageDialog(null, "Please, enter again! password has less 6 character and password, repassword matches","Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         boolean register = false;
         try {
             register = RegisterDAO.Register(name, user, email, pass, gender);
@@ -241,9 +266,9 @@ public class Register extends javax.swing.JDialog {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        if(register){
-            JOptionPane.showMessageDialog(null, "Registration successful!", "Error",JOptionPane.INFORMATION_MESSAGE);
-        }else{
+        if (register) {
+            JOptionPane.showMessageDialog(null, "Registration successful!", "Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateActionPerformed

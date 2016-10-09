@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.LoginDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -19,6 +20,8 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    BGToolkit bgtToolkit = new BGToolkit();
+    
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -155,6 +158,13 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String user = txtUser.getText().trim();
         String pass = String.valueOf(txtPass.getPassword()).trim();
+        
+        // check usrname
+        if(!bgtToolkit.checkUsername(user)){
+            JOptionPane.showMessageDialog(null, "Please, enter again! Username has only character, number.");
+            return;
+        }
+
         boolean login;
         try {
             login = LoginDAO.checkAccount(user, pass);

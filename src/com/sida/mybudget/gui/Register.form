@@ -31,7 +31,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
               <Component id="logo" min="-2" pref="128" max="-2" attributes="0"/>
-              <EmptySpace pref="136" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Component id="lbTitle" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
@@ -80,13 +80,15 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="lbTitle" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lbName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="rbtMale" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtFemale" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
