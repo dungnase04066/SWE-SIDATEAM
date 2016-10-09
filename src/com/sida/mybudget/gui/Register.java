@@ -260,7 +260,7 @@ public class Register extends javax.swing.JDialog {
         try {
             register = RegisterDAO.Register(name, user, email, pass, gender);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
+            btnCreateActionPerformed(null);
             return;
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

@@ -172,10 +172,11 @@ public class Login extends javax.swing.JFrame {
         try {
             login = LoginDAO.checkAccount(user, pass);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
+            btnLoginActionPerformed(null);
             return;
         }
         if (login) {
+            this.dispose();
             MainMenu.main(null);
         } else {
             JOptionPane.showMessageDialog(null, "Username or Password is incorect! ", "Error", JOptionPane.ERROR_MESSAGE);

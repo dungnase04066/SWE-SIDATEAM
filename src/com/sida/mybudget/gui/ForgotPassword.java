@@ -6,6 +6,7 @@
 package com.sida.mybudget.gui;
 
 import com.sida.mybudget.bo.BGToolkit;
+import com.sida.mybudget.dao.Data;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -148,7 +149,7 @@ public class ForgotPassword extends javax.swing.JDialog {
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         String user = txtUser.getText().trim();
         String email = txtEmail.getText().trim();
-        String mess = BGToolkit.HTTPPostRequest("http://anhdung.net/swe/forgotpass.php","pass=dungdeptrai&email="+email+"&user="+user);
+        String mess = BGToolkit.HTTPPostRequest(Data.getBaseURL()+"forgotpass.php","pass=dungdeptrai&email="+email+"&user="+user);
         JOptionPane.showMessageDialog(null, mess);
     }//GEN-LAST:event_btnOKActionPerformed
 

@@ -229,7 +229,7 @@ public class Profile extends javax.swing.JDialog {
         try {
             update = Data.getUser().update(name, email, gender, newPass, currentPass);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
+            btnUpdateActionPerformed(null);
             return;
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -238,8 +238,8 @@ public class Profile extends javax.swing.JDialog {
         if (update) {
             JOptionPane.showMessageDialog(null, "Your infomation update successful!", "Error", JOptionPane.INFORMATION_MESSAGE);
             init();
-        }else{
-            JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 

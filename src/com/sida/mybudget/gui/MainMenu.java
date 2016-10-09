@@ -69,6 +69,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         btnFeedback.setText("Feedback");
         btnFeedback.setFocusable(false);
+        btnFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFeedbackActionPerformed(evt);
+            }
+        });
 
         btnExit.setText("Exit");
         btnExit.setFocusable(false);
@@ -154,6 +159,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         new Profile();
     }//GEN-LAST:event_btnProfileActionPerformed
+
+    private void btnFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedbackActionPerformed
+        new Feedback();
+    }//GEN-LAST:event_btnFeedbackActionPerformed
 
     /**
      * @param args the command line arguments

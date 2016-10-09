@@ -17,8 +17,13 @@ import javax.swing.JOptionPane;
  */
 public class Data {
 
+    private static final String baseURL = "http://anhdung.net/swe/";
     private static Connection conn;
     private static User user;
+
+    public static String getBaseURL() {
+        return baseURL;
+    }
 
     public static User getUser() {
         return user;
@@ -35,7 +40,7 @@ public class Data {
     public static Connection connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://gator3028.hostgator.com:3306/ngodoan_swe?zeroDateTimeBehavior=convertToNull";
+            String url = "jdbc:mysql://gator3028.hostgator.com:3306/ngodoan_swe?zeroDateTimeBehavior=convertToNull&autoReconnect=true";
             String user = "ngodoan_swe";
             String pass = "?JE]QTINbIdr";
             conn = DriverManager.getConnection(url, user, pass);
