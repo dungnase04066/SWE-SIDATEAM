@@ -18,9 +18,6 @@ public class LoginDAO {
 
     public static boolean checkAccount(String user, String pass) throws SQLException {
         pass = BGToolkit.md5(pass);
-        if (user.equals("") || pass.equals("")) {
-            return false;
-        }
         PreparedStatement sql = Data.getConn().prepareStatement("SELECT * FROM users WHERE user=? AND pass=?");
         sql.setString(1, user);
         sql.setString(2, pass);
