@@ -11,6 +11,8 @@ package com.sida.mybudget.entity;
  */
 public class User {
 
+    private int uid;
+
     private String name;
     private String user;
     private String email;
@@ -20,12 +22,17 @@ public class User {
     public User() {
     }
 
-    public User(String name, String user, String email, String pass, boolean gender) {
+    public User(int uid, String name, String user, String email, String pass, boolean gender) {
+        this.uid = uid;
         this.name = name;
         this.user = user;
         this.email = email;
         this.pass = pass;
         this.gender = gender;
+    }
+
+    public int getUid() {
+        return uid;
     }
 
     public String getName() {
@@ -66,6 +73,11 @@ public class User {
 
     public void setGender(boolean gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "uid=" + uid + ", name=" + name + ", user=" + user + ", email=" + email + ", pass=" + pass + ", gender=" + gender + '}';
     }
 
 }

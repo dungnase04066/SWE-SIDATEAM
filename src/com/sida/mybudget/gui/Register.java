@@ -9,8 +9,6 @@ import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.RegisterDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -214,7 +212,7 @@ public class Register extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,11 +230,11 @@ public class Register extends javax.swing.JDialog {
     }//GEN-LAST:event_keyPress
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        String name = txtName.getText();
-        String user = txtUser.getText();
-        String email = txtEmail.getText();
-        String pass = String.valueOf(txtPass.getPassword());
-        String repass =  String.valueOf(txtRePass.getPassword());
+        String name = BGToolkit.formatName(txtName.getText().trim());
+        String user = txtUser.getText().trim().toLowerCase();
+        String email = txtEmail.getText().trim().toLowerCase();
+        String pass = String.valueOf(txtPass.getPassword()).trim();
+        String repass =  String.valueOf(txtRePass.getPassword()).trim();
         int gender = rbtMale.isSelected() ? 1 : 0;
 
         if (!bgtTookit.checkName(name)) {

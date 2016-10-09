@@ -21,7 +21,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     BGToolkit bgtToolkit = new BGToolkit();
-    
+
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -156,15 +156,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String user = txtUser.getText().trim();
+        String user = txtUser.getText().trim().toLowerCase();
         String pass = String.valueOf(txtPass.getPassword()).trim();
-        
+
         // check usrname
-        if(!bgtToolkit.checkUsername(user)){
-            JOptionPane.showMessageDialog(null, "Please, enter again! Username has only character, number.");
+        if (!bgtToolkit.checkUsername(user)) {
+            JOptionPane.showMessageDialog(null, "Please, enter again! Username has only character, number.","Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        if(pass.equals("")){
+            JOptionPane.showMessageDialog(null, "Please, enter again! Password must not be empty.","Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         boolean login;
         try {
             login = LoginDAO.checkAccount(user, pass);
@@ -173,8 +176,8 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         if (login) {
-            System.out.println(" show main menu");
-        }else{
+            MainMenu.main(null);
+        } else {
             JOptionPane.showMessageDialog(null, "Username or Password is incorect! ", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -184,7 +187,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_lbForgotPassMousePressed
 
     private void keyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnLoginActionPerformed(null);
         }
     }//GEN-LAST:event_keyPressed
