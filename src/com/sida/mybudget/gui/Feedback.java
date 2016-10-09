@@ -9,8 +9,6 @@ import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.Data;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -123,7 +121,7 @@ public class Feedback extends javax.swing.JDialog {
         String feedback = txtFeedback.getText();
         try {
             feedback = URLEncoder.encode(feedback, "UTF-8");
-            String mess = BGToolkit.HTTPPostRequest(Data.getBaseURL() + "feedback.php", "pass=dungdeptrai&name=" + Data.getUser().getUser()+ "&feedback=" + feedback);
+            String mess = BGToolkit.HTTPPostRequest(Data.getBaseURL() + "feedback.php", "pass=dungdeptrai&id=" + Integer.toString(Data.getUser().getUid()) + "&feedback=" + feedback);
             JOptionPane.showMessageDialog(null, mess, "Error", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         } catch (UnsupportedEncodingException ex) {
