@@ -5,6 +5,12 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.dao.NewRecordDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Fzzf
@@ -167,11 +173,26 @@ public class NewRecords extends javax.swing.JDialog {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String date = txtDate.getText().trim();
         double amount = Double.parseDouble(txtAmount.getText());
-        
+        int type = rbtIncome.isSelected() ? 1 : 0;
+        String note = txtNote.getText().trim();
+
+        boolean add = false;
+        try {
+            NewRecordDAO.addNew(date, amount, type, note);
+        } catch (SQLException ex) {
+            btnAddActionPerformed(null);
+            return;
+        }
+        if (add) {
+            JOptionPane.showMessageDialog(null, "Add records successful!", "Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
