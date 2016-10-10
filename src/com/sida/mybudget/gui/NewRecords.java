@@ -44,7 +44,7 @@ public class NewRecords extends javax.swing.JDialog {
         rbtExpense = new javax.swing.JRadioButton();
         btnAdd = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbDateFormat = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Record");
@@ -85,7 +85,7 @@ public class NewRecords extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("DD/MM/YYYY");
+        lbDateFormat.setText("DD/MM/YYYY");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +123,7 @@ public class NewRecords extends javax.swing.JDialog {
                                     .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNote))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)))
+                                .addComponent(lbDateFormat)))
                         .addGap(0, 18, Short.MAX_VALUE)))
                 .addGap(10, 10, 10))
         );
@@ -140,7 +140,7 @@ public class NewRecords extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(lbDateFormat))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +165,9 @@ public class NewRecords extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        String date = txtDate.getText().trim();
+        double amount = Double.parseDouble(txtAmount.getText());
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -180,9 +182,9 @@ public class NewRecords extends javax.swing.JDialog {
     private javax.swing.ButtonGroup btgType;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbAmount;
     private javax.swing.JLabel lbDate;
+    private javax.swing.JLabel lbDateFormat;
     private javax.swing.JLabel lbLogo;
     private javax.swing.JLabel lbNote;
     private javax.swing.JLabel lbTitle;
