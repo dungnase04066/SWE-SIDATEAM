@@ -44,6 +44,7 @@ public class NewRecords extends javax.swing.JDialog {
         rbtExpense = new javax.swing.JRadioButton();
         btnAdd = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Record");
@@ -84,16 +85,14 @@ public class NewRecords extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setText("DD/MM/YYYY");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(lbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 126, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,22 +102,29 @@ public class NewRecords extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbDate)
-                            .addComponent(lbNote)
-                            .addComponent(lbAmount)
-                            .addComponent(lbType))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDate)
-                            .addComponent(txtAmount)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbtIncome)
+                                .addGap(136, 136, 136)
+                                .addComponent(lbLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbDate)
+                                    .addComponent(lbNote)
+                                    .addComponent(lbAmount)
+                                    .addComponent(lbType))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtAmount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(rbtIncome)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbtExpense))
+                                    .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNote))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtExpense)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtNote))))
+                                .addComponent(jLabel1)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -132,7 +138,9 @@ public class NewRecords extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbDate)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,6 +180,7 @@ public class NewRecords extends javax.swing.JDialog {
     private javax.swing.ButtonGroup btgType;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbAmount;
     private javax.swing.JLabel lbDate;
     private javax.swing.JLabel lbLogo;

@@ -32,11 +32,6 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
-                      <Component id="lbLogo" min="-2" pref="128" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="126" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lbTitle" alignment="0" max="32767" attributes="0"/>
@@ -47,26 +42,36 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbDate" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbNote" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbAmount" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbType" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtDate" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtAmount" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="rbtIncome" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rbtExpense" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="lbLogo" min="-2" pref="128" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtNote" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbDate" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbNote" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbAmount" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbType" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtAmount" alignment="0" pref="220" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="rbtIncome" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="rbtExpense" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtDate" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNote" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                      <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -84,7 +89,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbDate" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="txtDate" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtAmount" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -188,6 +196,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="DD/MM/YYYY"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
