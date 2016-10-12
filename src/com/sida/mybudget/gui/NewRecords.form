@@ -199,7 +199,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbDateFormat">
       <Properties>
-        <Property name="text" type="java.lang.String" value="DD/MM/YYYY"/>
+        <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
       </Properties>
     </Component>
   </SubComponents>

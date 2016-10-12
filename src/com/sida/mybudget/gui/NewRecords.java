@@ -5,7 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
-import com.sida.mybudget.dao.NewRecordDAO;
+import com.sida.mybudget.dao.RecordDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,7 +91,7 @@ public class NewRecords extends javax.swing.JDialog {
             }
         });
 
-        lbDateFormat.setText("DD/MM/YYYY");
+        lbDateFormat.setText("YYYY-MM-DD");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,8 +178,9 @@ public class NewRecords extends javax.swing.JDialog {
 
         boolean add = false;
         try {
-            NewRecordDAO.addNew(date, amount, type, note);
+            add = RecordDAO.addNew(date, amount, type, note);
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             btnAddActionPerformed(null);
             return;
         }

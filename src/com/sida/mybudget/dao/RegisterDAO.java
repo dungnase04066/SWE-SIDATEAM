@@ -39,9 +39,9 @@ public class RegisterDAO {
         sql.setString(4, pass);
         sql.setInt(5, gender);
         if(sql.executeUpdate()>0){
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 
