@@ -170,7 +170,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFeedbackActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        new NewRecords();
+        new NewRecord();
     }//GEN-LAST:event_btnNewActionPerformed
 
     /**

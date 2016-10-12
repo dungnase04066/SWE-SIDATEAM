@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.RecordDAO;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,12 +16,12 @@ import javax.swing.JOptionPane;
  *
  * @author Fzzf
  */
-public class NewRecords extends javax.swing.JDialog {
+public class NewRecord extends javax.swing.JDialog {
 
     /**
      * Creates new form NewRecords
      */
-    public NewRecords() {
+    public NewRecord() {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
@@ -171,10 +172,37 @@ public class NewRecords extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        double amount = 0;
         String date = txtDate.getText().trim();
-        double amount = Double.parseDouble(txtAmount.getText());
         int type = rbtIncome.isSelected() ? 1 : 0;
         String note = txtNote.getText().trim();
+
+        if (!BGToolkit.checkDate(date)) {
+            JOptionPane.showMessageDialog(null, "Date format incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        /**
+         * format date: yyyy-MM-dd to database
+         */
+        date = date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
+        System.out.println(date);
+        /**
+         * format amount
+         */
+        try {
+            amount = Double.parseDouble(txtAmount.getText());
+            if(!txtAmount.getText().matches("[0-9.]+")){
+             JOptionPane.showMessageDialog(null, "Amount must be number ", "Error", JOptionPane.ERROR_MESSAGE);
+             return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Amount is only number and less 2 billion", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!BGToolkit.checkAmount(amount)) {
+            JOptionPane.showMessageDialog(null, "Amount is only number and less 2 billion ", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         boolean add = false;
         try {

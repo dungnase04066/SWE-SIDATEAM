@@ -131,13 +131,13 @@ public class BGToolkit {
      * @return
      */
     public static boolean checkDate(String date) {
-        if (!date.matches("[0-9]{2}+/+[0-9]{2}+/+[0-9]{4}")) {
+        if (!date.matches("[0-9]{2}+-+[0-9]{2}+-+[0-9]{4}")) {
             return false;
         }
         if (date.equals("")) {
             return false;
         }
-        SimpleDateFormat sdm = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdm = new SimpleDateFormat("dd-MM-yyyy");
         sdm.setLenient(false);
         try {
             Date datetmp = sdm.parse(date);
@@ -176,6 +176,22 @@ public class BGToolkit {
             return false;
         }
         if (!pass1.equals(pass2)) {
+            return false;
+        }
+        return true;
+    }
+/**
+ * Check amount input, amount more than 0 and less 2 billion
+ * @param number
+ * @return 
+ */
+    public static boolean checkAmount(double number) {
+        try {
+
+            if (number > 2000000000 || number < 0) {
+                return false;
+            }
+        } catch (NumberFormatException e) {
             return false;
         }
         return true;
