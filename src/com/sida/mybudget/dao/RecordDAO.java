@@ -54,7 +54,39 @@ public class RecordDAO {
         PreparedStatement sql = Data.getConn().prepareStatement("DELETE FROM record WHERE rid = ? AND  uid =?");
         sql.setInt(1, id);
         sql.setInt(2, Data.getUser().getUid());
-        
+
+        if (sql.executeUpdate() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static Vector get(int id) throws SQLException {
+        PreparedStatement sql = Data.getConn().prepareStatement("SELECT * FROM record WHERE rid = ?");
+        sql.setInt(1, id);
+        System.out.println(sql);
+        Vector v = new Vector();
+        ResultSet rs = sql.executeQuery();
+        while (rs.next()) {
+            v.add(rs.getInt("rid"));
+            v.add(rs.getInt("uid"));
+            v.add(rs.getDouble("amount"));
+            v.add(rs.getBoolean("type"));
+            v.add(rs.getString("date"));
+            v.add(rs.getString("note"));
+        }
+        return v;
+    }
+    
+    public static boolean editRecord(int rid, String date, double amount, int type, String note) throws SQLException {
+        PreparedStatement sql = Data.getConn().prepareStatement("UPDATE record SET type=?, amount=?, date=?, note=? WHERE rid=? AND uid=?");
+        sql.setInt(1, type);
+        sql.setDouble(2, amount);
+        sql.setString(3, date);
+        sql.setString(4, note);
+        sql.setInt(5, rid);
+        sql.setInt(6, Data.getUser().getUid());
         if (sql.executeUpdate() > 0) {
             return true;
         } else {

@@ -5,19 +5,38 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
+import com.sida.mybudget.dao.RecordDAO;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Fzzf
  */
 public class UpdateRecord extends javax.swing.JDialog {
 
+    private int rid;
+
     /**
      * Creates new form NewRecords
      */
-    public UpdateRecord() {
+    public UpdateRecord(Vector db) {
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);
+        rid = (int) db.get(0);
+        txtDate.setText((String) db.get(4));
+        txtNote.setText((String) db.get(5));
+        txtAmount.setText(Double.toString((double) db.get(2)));
+        if ((boolean) db.get(3)) {
+            rbtIncome.setSelected(true);
+        } else {
+            rbtExpense.setSelected(true);
+        };
         setVisible(true);
     }
 
@@ -42,7 +61,7 @@ public class UpdateRecord extends javax.swing.JDialog {
         txtNote = new javax.swing.JTextField();
         rbtIncome = new javax.swing.JRadioButton();
         rbtExpense = new javax.swing.JRadioButton();
-        btnAdd = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         lbDateFormat = new javax.swing.JLabel();
 
@@ -71,10 +90,10 @@ public class UpdateRecord extends javax.swing.JDialog {
         btgType.add(rbtExpense);
         rbtExpense.setText("Expense");
 
-        btnAdd.setText("Update");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setText("Update");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
 
@@ -98,7 +117,7 @@ public class UpdateRecord extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
@@ -156,7 +175,7 @@ public class UpdateRecord extends javax.swing.JDialog {
                             .addComponent(lbNote))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
+                    .addComponent(btnEdit)
                     .addComponent(btnCancel))
                 .addContainerGap())
         );
@@ -164,9 +183,26 @@ public class UpdateRecord extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        double amount = Double.parseDouble(txtAmount.getText());
+        String date = txtDate.getText().trim();
+        int type = rbtIncome.isSelected() ? 1 : 0;
+        String note = txtNote.getText().trim();
 
-    }//GEN-LAST:event_btnAddActionPerformed
+        boolean edit = false;
+        try {
+            edit = RecordDAO.editRecord(rid, date, amount, type, note);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            btnEditActionPerformed(null);
+            return;
+        }
+        if (edit) {
+            JOptionPane.showMessageDialog(null, "Edit records successful!", "Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
@@ -178,8 +214,8 @@ public class UpdateRecord extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgType;
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JLabel lbAmount;
     private javax.swing.JLabel lbDate;
     private javax.swing.JLabel lbDateFormat;

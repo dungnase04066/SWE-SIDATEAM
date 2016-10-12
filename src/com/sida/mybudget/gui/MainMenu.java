@@ -55,6 +55,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         btnRecord.setText("Record");
         btnRecord.setFocusable(false);
+        btnRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecordActionPerformed(evt);
+            }
+        });
 
         btnNew.setText("New");
         btnNew.setFocusable(false);
@@ -172,6 +177,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         new NewRecord();
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecordActionPerformed
+        new GetRecord();
+    }//GEN-LAST:event_btnRecordActionPerformed
 
     /**
      * @param args the command line arguments

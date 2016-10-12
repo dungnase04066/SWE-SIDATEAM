@@ -131,6 +131,9 @@
             <Property name="text" type="java.lang.String" value="Record"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecordActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNew">
           <Properties>

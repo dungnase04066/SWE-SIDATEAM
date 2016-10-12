@@ -5,8 +5,6 @@
  */
 package com.sida.mybudget.gui;
 
-import com.sida.mybudget.dao.Data;
-import com.sida.mybudget.dao.LoginDAO;
 import com.sida.mybudget.dao.RecordDAO;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -38,23 +36,17 @@ public class GetRecord extends javax.swing.JDialog {
         col.add("ID");
         row = new Vector();
         initTable();
+        setVisible(true);
     }
 
     private void initTable() {
-        Data.connect();
         try {
-            LoginDAO.checkAccount("khoindse04028", "123456");
-        } catch (SQLException ex) {
-            Logger.getLogger(GetRecord.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Vector<Vector> temp = new Vector();
-        try {
-            temp = RecordDAO.getList();
+            data = RecordDAO.getList();
         } catch (SQLException ex) {
             Logger.getLogger(GetRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
         row = new Vector<>();
-        for (Vector v : temp) {
+        for (Vector v : data) {
             Vector x = new Vector();
             x.add(v.get(4));
             x.add(v.get(2));
@@ -94,6 +86,8 @@ public class GetRecord extends javax.swing.JDialog {
         lbTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("History");
+        setModal(true);
 
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,6 +114,11 @@ public class GetRecord extends javax.swing.JDialog {
         scoData.setViewportView(tbData);
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +179,7 @@ public class GetRecord extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -211,6 +211,19 @@ public class GetRecord extends javax.swing.JDialog {
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        int ind = tbData.getSelectedRow();
+        if (ind < 0) {
+            System.out.println("Error");
+            return;
+        }
+
+        int id = (int) row.get(ind).get(4);
+        new UpdateRecord(data.get(ind));
+        initTable();
+        
+    }//GEN-LAST:event_btnEditActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
