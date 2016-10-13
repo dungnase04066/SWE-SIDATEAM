@@ -27,6 +27,7 @@ public class GetRecord extends javax.swing.JDialog {
     private Vector<Vector> row;
     private Vector<Vector> data;
     private boolean all;
+
     public GetRecord() {
         initComponents();
         col = new Vector<>();
@@ -301,6 +302,11 @@ public class GetRecord extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        if (all) {
+            btnClearActionPerformed(null);
+        } else {
+            btnSearchActionPerformed(null);
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -315,9 +321,9 @@ public class GetRecord extends javax.swing.JDialog {
         }
         int id = (int) row.get(ind).get(4);
         new UpdateRecord(data.get(ind));
-        if(all){
+        if (all) {
             btnClearActionPerformed(null);
-        }else{
+        } else {
             btnSearchActionPerformed(null);
         }
     }//GEN-LAST:event_btnEditActionPerformed
@@ -337,20 +343,64 @@ public class GetRecord extends javax.swing.JDialog {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        String dateFrom = txtDateFrom.getText();
-        String dateTo = txtDateTo.getText();
-        double amount = Double.parseDouble(txtAmount.getText());
+        String dateFrom = txtDateFrom.getText().trim();
+        String dateTo = txtDateTo.getText().trim();
+        double amount = 0;
         int type = cbType.getSelectedIndex();
-        
-        if (!BGToolkit.checkDate(dateFrom)||!BGToolkit.checkDate(dateTo)) {
-            JOptionPane.showMessageDialog(null, "Date format incorrect! (DD-MM-YYYY)", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        dateFrom = dateFrom.substring(6, 10) + "-" + dateFrom.substring(3, 5) + "-" + dateFrom.substring(0, 2);
-        System.out.println(dateFrom);
-        dateTo = dateTo.substring(6, 10) + "-" + dateTo.substring(3, 5) + "-" + dateTo.substring(0, 2);
-        System.out.println(dateTo);
 
+        /**
+         * check date
+         */
+        if (!dateFrom.equals("")) {
+
+            if (!BGToolkit.checkDate(dateFrom)) {
+                JOptionPane.showMessageDialog(null, "Datefrom format is incorrect! (DD-MM-YYYY)", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            } else {
+                dateFrom = BGToolkit.convertToServer(dateFrom);
+                System.out.println(dateFrom);
+            }
+
+        }
+
+        if (!dateTo.equals("")) {
+            if (!BGToolkit.checkDate(dateTo)) {
+                JOptionPane.showMessageDialog(null, "Dateto format is incorrect! (DD-MM-YYYY)", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+
+            } else {
+                dateTo = BGToolkit.convertToServer(dateTo);
+                System.out.println(dateTo);
+            }
+
+        }
+
+        /**
+         * check amount
+         */
+        if (txtAmount.getText().equals("")) {
+            amount = -1;
+
+        } else {
+            try {
+                amount = Double.parseDouble(txtAmount.getText());
+                if (!txtAmount.getText().matches("[0-9.-]+")) {
+                    JOptionPane.showMessageDialog(null, "Amount must be number ", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Amount is only number and less 2 billion", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            if (!BGToolkit.checkAmount(amount)) {
+                JOptionPane.showMessageDialog(null, "Amount is only number and less 2 billion ", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        /**
+         *
+         */
         try {
             data = RecordDAO.getList(dateFrom, dateTo, amount, type);
         } catch (SQLException ex) {

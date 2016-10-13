@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.dao;
 
+import com.sida.mybudget.bo.BGToolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,7 +44,8 @@ public class RecordDAO {
             temp.add(rs.getInt("uid"));
             temp.add(rs.getDouble("amount"));
             temp.add(rs.getBoolean("type"));
-            temp.add(rs.getString("date"));
+            String date = BGToolkit.convertToDB(rs.getString("date"));
+            temp.add(date);
             temp.add(rs.getString("note"));
             v.add(temp);
         }
@@ -74,7 +76,9 @@ public class RecordDAO {
             temp.add(rs.getInt("uid"));
             temp.add(rs.getDouble("amount"));
             temp.add(rs.getBoolean("type"));
-            temp.add(rs.getString("date"));
+            String date = rs.getString("date");
+            date = BGToolkit.convertToDB(date);
+            temp.add(date);
             temp.add(rs.getString("note"));
             v.add(temp);
         }
@@ -103,7 +107,9 @@ public class RecordDAO {
             v.add(rs.getInt("uid"));
             v.add(rs.getDouble("amount"));
             v.add(rs.getBoolean("type"));
-            v.add(rs.getString("date"));
+            String date = rs.getString("date");
+            date = BGToolkit.convertToDB(date);
+            v.add(date);
             v.add(rs.getString("note"));
         }
         return v;
@@ -164,7 +170,9 @@ public class RecordDAO {
             temp.add(rs.getInt("uid"));
             temp.add(rs.getDouble("amount"));
             temp.add(rs.getBoolean("type"));
-            temp.add(rs.getString("date"));
+            String date = rs.getString("date");
+            date = BGToolkit.convertToDB(date);
+            temp.add(date);
             temp.add(rs.getString("note"));
             v.add(temp);
         }

@@ -232,4 +232,13 @@ public class BGToolkit {
             
         }
     }
+
+    public static String convertToDB(String date) {
+        date = date.substring(8, 10) + "-" + date.substring(5, 7) + "-" + date.substring(0, 4);
+        return date;
+    }
+    public static String convertToServer(String date) {
+        date = date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
+        return date;
+    }
 }

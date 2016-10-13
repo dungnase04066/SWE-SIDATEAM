@@ -185,10 +185,37 @@ public class UpdateRecord extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        double amount = Double.parseDouble(txtAmount.getText());
+        double amount = 0;
         String date = txtDate.getText().trim();
         int type = rbtIncome.isSelected() ? 1 : 0;
         String note = txtNote.getText().trim();
+
+        if (!BGToolkit.checkDate(date)) {
+            JOptionPane.showMessageDialog(null, "Date format incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        /**
+         * format date: yyyy-MM-dd to database
+         */
+        date = BGToolkit.convertToServer(date);
+        System.out.println(date);
+        /**
+         * format amount
+         */
+        try {
+            amount = Double.parseDouble(txtAmount.getText());
+            if(!txtAmount.getText().matches("[0-9.]+")){
+             JOptionPane.showMessageDialog(null, "Amount must be number ", "Error", JOptionPane.ERROR_MESSAGE);
+             return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Amount is only number and less 2 billion", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!BGToolkit.checkAmount(amount)) {
+            JOptionPane.showMessageDialog(null, "Amount is only number and less 2 billion ", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         boolean edit = false;
         try {

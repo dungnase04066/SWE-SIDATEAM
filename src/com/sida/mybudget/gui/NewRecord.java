@@ -185,7 +185,7 @@ public class NewRecord extends javax.swing.JDialog {
         /**
          * format date: yyyy-MM-dd to database
          */
-        date = date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
+        date = BGToolkit.convertToServer(date);
         System.out.println(date);
         /**
          * format amount
