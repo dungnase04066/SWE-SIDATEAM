@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.RecordDAO;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -340,6 +341,15 @@ public class GetRecord extends javax.swing.JDialog {
         String dateTo = txtDateTo.getText();
         double amount = Double.parseDouble(txtAmount.getText());
         int type = cbType.getSelectedIndex();
+        
+        if (!BGToolkit.checkDate(dateFrom)||!BGToolkit.checkDate(dateTo)) {
+            JOptionPane.showMessageDialog(null, "Date format incorrect! (DD-MM-YYYY)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        dateFrom = dateFrom.substring(6, 10) + "-" + dateFrom.substring(3, 5) + "-" + dateFrom.substring(0, 2);
+        System.out.println(dateFrom);
+        dateTo = dateTo.substring(6, 10) + "-" + dateTo.substring(3, 5) + "-" + dateTo.substring(0, 2);
+        System.out.println(dateTo);
 
         try {
             data = RecordDAO.getList(dateFrom, dateTo, amount, type);

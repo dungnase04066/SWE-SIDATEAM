@@ -5,8 +5,12 @@
  */
 package com.sida.mybudget.bo;
 
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -16,6 +20,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.xml.bind.DatatypeConverter;
 
 /**
@@ -180,11 +187,13 @@ public class BGToolkit {
         }
         return true;
     }
-/**
- * Check amount input, amount more than 0 and less 2 billion
- * @param number
- * @return 
- */
+
+    /**
+     * Check amount input, amount more than 0 and less 2 billion
+     *
+     * @param number
+     * @return
+     */
     public static boolean checkAmount(double number) {
         try {
 
@@ -197,4 +206,16 @@ public class BGToolkit {
         return true;
     }
 
+    public static void setBackground(JFrame jFrame) {
+        try {
+            Image backgroundImage = ImageIO.read(new File(jFrame.getClass().getResource("/com/sida/mybudget/asset/background.jpg").getFile()));
+            jFrame.setContentPane(new JPanel(new BorderLayout()) {
+                public void paintComponent(Graphics g) {
+                    g.drawImage(backgroundImage, 0, 0, null);
+                }
+            });
+        } catch (Exception e) {
+            System.out.println(jFrame.getClass().getResource("/com/sida/mybudget/asset/background.jpg").getFile());
+        }
+    }
 }

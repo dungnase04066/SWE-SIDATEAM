@@ -24,6 +24,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        BGToolkit.setBackground(this);
         setLocationRelativeTo(null);
         setTitle("Login");
     }
