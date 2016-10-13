@@ -288,7 +288,7 @@ public class GetRecord extends javax.swing.JDialog {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int ind = tbData.getSelectedRow();
         if (ind < 0) {
-            JOptionPane.showMessageDialog(null, "No item selected!","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No item selected!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -323,7 +323,7 @@ public class GetRecord extends javax.swing.JDialog {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         int ind = tbData.getSelectedRow();
         if (ind < 0) {
-            JOptionPane.showMessageDialog(null, "No item selected!","Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No item selected!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         int id = (int) row.get(ind).get(4);
@@ -416,8 +416,8 @@ public class GetRecord extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void tbDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDataMouseClicked
-        if(evt.getClickCount()==2){
-            
+        if (evt.getClickCount() == 2) {
+            new DetailRecord(data.get(tbData.getSelectedRow()));
         }
     }//GEN-LAST:event_tbDataMouseClicked
 

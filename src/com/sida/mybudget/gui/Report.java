@@ -9,8 +9,6 @@ import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.RecordDAO;
 import java.sql.SQLException;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,6 +17,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Fzzf
  */
 public class Report extends javax.swing.JDialog {
+
+    Vector<Vector> rowIn;
+    Vector<Vector> rowEx;
 
     /**
      * Creates new form Report
@@ -123,6 +124,11 @@ public class Report extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbIncome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbIncomeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbIncome);
 
         tbExpense.setModel(new javax.swing.table.DefaultTableModel(
@@ -136,6 +142,11 @@ public class Report extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbExpense.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbExpenseMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbExpense);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -210,16 +221,16 @@ public class Report extends javax.swing.JDialog {
         try {
             v = RecordDAO.getViewTime(cbViewBy.getSelectedIndex());
         } catch (SQLException ex) {
-            
+
         }
         cbTypeViewBy.setModel(new DefaultComboBoxModel<>(v));
     }
 
     private void initTable() {
-        Vector<String> col;
         Vector<Vector> rowIn;
         Vector<Vector> rowEx;
-        double in = 0,ex = 0,total = 0;
+        Vector<String> col;
+        double in = 0, ex = 0, total = 0;
         col = new Vector<>();
         col.add("Date");
         col.add("Amount");
@@ -227,11 +238,13 @@ public class Report extends javax.swing.JDialog {
 
         rowIn = new Vector<>();
         rowEx = new Vector<>();
+        this.rowIn = new Vector<>();
+        this.rowEx = new Vector<>();
         Vector<Vector> v = new Vector<>();
         try {
             v = RecordDAO.getStatistics((String) cbTypeViewBy.getSelectedItem(), cbViewBy.getSelectedIndex());
         } catch (SQLException e) {
-            
+
         }
         if (v != null) {
             for (Vector vector : v) {
@@ -241,17 +254,19 @@ public class Report extends javax.swing.JDialog {
                     temp.add(vector.get(2));
                     temp.add(vector.get(5));
                     rowIn.add(temp);
+                    this.rowIn.add(vector);
                     in += (double) vector.get(2);
                 } else {
                     temp.add(vector.get(4));
                     temp.add(-(double) vector.get(2));
                     temp.add(vector.get(5));
                     rowEx.add(temp);
+                    this.rowEx.add(vector);
                     ex += (double) vector.get(2);
                 }
             }
         }
-        total = in-ex;
+        total = in - ex;
         lbTotal.setText(String.format("Total: $%.2f", total));
         lbIncome.setText(String.format("Income: $%.2f", in));
         lbExpense.setText(String.format("Expense: $%.2f", ex));
@@ -270,6 +285,18 @@ public class Report extends javax.swing.JDialog {
     private void cbTypeViewByItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTypeViewByItemStateChanged
         initTable();
     }//GEN-LAST:event_cbTypeViewByItemStateChanged
+
+    private void tbIncomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbIncomeMouseClicked
+        if (evt.getClickCount() == 2) {
+            new DetailRecord(rowIn.get(tbIncome.getSelectedRow()));
+        }
+    }//GEN-LAST:event_tbIncomeMouseClicked
+
+    private void tbExpenseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbExpenseMouseClicked
+        if (evt.getClickCount() == 2) {
+            new DetailRecord(rowEx.get(tbExpense.getSelectedRow()));
+        }
+    }//GEN-LAST:event_tbExpenseMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
