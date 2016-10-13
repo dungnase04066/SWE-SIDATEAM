@@ -206,11 +206,11 @@ public class Report extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void initTypeView() {
-        Vector<String> v = null;
+        Vector<String> v = new Vector<>();
         try {
             v = RecordDAO.getViewTime(cbViewBy.getSelectedIndex());
         } catch (SQLException ex) {
-            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         cbTypeViewBy.setModel(new DefaultComboBoxModel<>(v));
     }
@@ -227,11 +227,11 @@ public class Report extends javax.swing.JDialog {
 
         rowIn = new Vector<>();
         rowEx = new Vector<>();
-        Vector<Vector> v = null;
+        Vector<Vector> v = new Vector<>();
         try {
             v = RecordDAO.getStatistics((String) cbTypeViewBy.getSelectedItem(), cbViewBy.getSelectedIndex());
         } catch (SQLException e) {
-            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         if (v != null) {
             for (Vector vector : v) {

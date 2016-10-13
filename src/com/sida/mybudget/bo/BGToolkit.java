@@ -209,7 +209,7 @@ public class BGToolkit {
 
     public static void setBackground(JFrame jFrame) {
         try {
-            Image backgroundImage = ImageIO.read(jFrame.getClass().getResource("/com/sida/mybudget/asset/background.jpg"));
+            Image backgroundImage = ImageIO.read(jFrame.getClass().getResource("/com/sida/mybudget/asset/background.png"));
             jFrame.setContentPane(new JPanel(new BorderLayout()) {
                 public void paintComponent(Graphics g) {
                     g.drawImage(backgroundImage, 0, 0, null);
@@ -222,7 +222,7 @@ public class BGToolkit {
     
     public static void setBackground(JDialog jDialog) {
         try {
-            Image backgroundImage = ImageIO.read(jDialog.getClass().getResource("/com/sida/mybudget/asset/background.jpg"));
+            Image backgroundImage = ImageIO.read(jDialog.getClass().getResource("/com/sida/mybudget/asset/background.png"));
             jDialog.setContentPane(new JPanel(new BorderLayout()) {
                 public void paintComponent(Graphics g) {
                     g.drawImage(backgroundImage, 0, 0, null);

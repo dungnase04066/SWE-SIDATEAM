@@ -146,6 +146,9 @@ public class RecordDAO {
     }
 
     public static Vector<Vector> getStatistics(String time, int typeView) throws SQLException {
+        if(time==null){
+            return new Vector<>();
+        }
         if (typeView == 0) {
             time = "MONTH(date)=" + time.replaceAll("-", " AND YEAR(date)=");
         } else {
