@@ -23,8 +23,6 @@ public class Profile extends javax.swing.JDialog {
         BGToolkit.setBackground(this);
         initComponents();
         setModal(true);
-        setLocationRelativeTo(this);
-        setTitle("Account Management");
         init();
         setVisible(true);
     }
@@ -75,6 +73,7 @@ public class Profile extends javax.swing.JDialog {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Account Management");
         setResizable(false);
 
         lbUser.setText("Username");
@@ -212,6 +211,7 @@ public class Profile extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

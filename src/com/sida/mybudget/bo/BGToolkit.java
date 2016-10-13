@@ -67,7 +67,6 @@ public class BGToolkit {
             rd.close();
             return response.toString();
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         } finally {
             if (connection != null) {
@@ -198,7 +197,7 @@ public class BGToolkit {
     public static boolean checkAmount(double number) {
         try {
 
-            if (number > 2000000000 || number < 0) {
+            if (number > 2000000000 || number <= 0) {
                 return false;
             }
         } catch (NumberFormatException e) {

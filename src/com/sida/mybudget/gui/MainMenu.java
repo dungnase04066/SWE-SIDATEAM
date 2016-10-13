@@ -6,7 +6,6 @@
 package com.sida.mybudget.gui;
 
 import com.sida.mybudget.bo.BGToolkit;
-import com.sida.mybudget.dao.Data;
 
 /**
  *
@@ -20,9 +19,6 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         BGToolkit.setBackground(this);
         initComponents();
-        setTitle("My Budget");
-        setLocationRelativeTo(null);
-        System.out.println(Data.getUser());
     }
 
     /**
@@ -44,6 +40,8 @@ public class MainMenu extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("My Budget");
+        setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/logo.png"))); // NOI18N
 
@@ -148,6 +146,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

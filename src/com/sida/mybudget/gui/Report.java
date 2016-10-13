@@ -27,7 +27,6 @@ public class Report extends javax.swing.JDialog {
         BGToolkit.setBackground(this);
         setModal(true);
         initComponents();
-        setLocationRelativeTo(null);
         initTypeView();
         initTable();
         setVisible(true);
@@ -204,6 +203,7 @@ public class Report extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void initTypeView() {
         Vector<String> v = new Vector<>();

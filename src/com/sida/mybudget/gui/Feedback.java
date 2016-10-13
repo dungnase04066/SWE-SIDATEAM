@@ -24,8 +24,6 @@ public class Feedback extends javax.swing.JDialog {
         BGToolkit.setBackground(this);
         setModal(true);
         initComponents();
-        setTitle("Feedback");
-        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -46,6 +44,8 @@ public class Feedback extends javax.swing.JDialog {
         lbTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Feedback");
+        setResizable(false);
 
         txtFeedback.setColumns(20);
         txtFeedback.setRows(5);
@@ -112,6 +112,7 @@ public class Feedback extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

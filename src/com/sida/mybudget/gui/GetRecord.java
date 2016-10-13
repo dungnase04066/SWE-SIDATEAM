@@ -29,6 +29,7 @@ public class GetRecord extends javax.swing.JDialog {
     private boolean all;
 
     public GetRecord() {
+        BGToolkit.setBackground(this);
         initComponents();
         col = new Vector<>();
         col.add("Date");
@@ -102,6 +103,7 @@ public class GetRecord extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("History");
         setModal(true);
+        setResizable(false);
 
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,6 +127,11 @@ public class GetRecord extends javax.swing.JDialog {
         tbData.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tbData.setFocusable(false);
         tbData.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDataMouseClicked(evt);
+            }
+        });
         scoData.setViewportView(tbData);
 
         btnEdit.setText("Edit");
@@ -281,7 +288,7 @@ public class GetRecord extends javax.swing.JDialog {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int ind = tbData.getSelectedRow();
         if (ind < 0) {
-            System.out.println("Error");
+            JOptionPane.showMessageDialog(null, "No item selected!","Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -316,7 +323,7 @@ public class GetRecord extends javax.swing.JDialog {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         int ind = tbData.getSelectedRow();
         if (ind < 0) {
-            System.out.println("Error");
+            JOptionPane.showMessageDialog(null, "No item selected!","Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         int id = (int) row.get(ind).get(4);
@@ -336,7 +343,7 @@ public class GetRecord extends javax.swing.JDialog {
         try {
             data = RecordDAO.getList();
         } catch (SQLException ex) {
-            ex.printStackTrace();
+
         }
         initTable();
         all = true;
@@ -358,7 +365,6 @@ public class GetRecord extends javax.swing.JDialog {
                 return;
             } else {
                 dateFrom = BGToolkit.convertToServer(dateFrom);
-                System.out.println(dateFrom);
             }
 
         }
@@ -370,7 +376,6 @@ public class GetRecord extends javax.swing.JDialog {
 
             } else {
                 dateTo = BGToolkit.convertToServer(dateTo);
-                System.out.println(dateTo);
             }
 
         }
@@ -409,6 +414,12 @@ public class GetRecord extends javax.swing.JDialog {
         initTable();
         all = false;
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void tbDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDataMouseClicked
+        if(evt.getClickCount()==2){
+            
+        }
+    }//GEN-LAST:event_tbDataMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;

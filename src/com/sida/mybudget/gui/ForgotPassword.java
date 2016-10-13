@@ -22,9 +22,7 @@ public class ForgotPassword extends javax.swing.JDialog {
     public ForgotPassword() {
         BGToolkit.setBackground(this);
         setModal(true);
-        setTitle("Forgot password");
         initComponents();
-        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -47,6 +45,7 @@ public class ForgotPassword extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Forgot Password");
         setModal(true);
         setResizable(false);
 
@@ -141,6 +140,7 @@ public class ForgotPassword extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

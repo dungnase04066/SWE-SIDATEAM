@@ -26,8 +26,6 @@ public class Register extends javax.swing.JDialog {
         BGToolkit.setBackground(this);
         initComponents();
         setModal(true);
-        setTitle("Register");
-        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -60,6 +58,7 @@ public class Register extends javax.swing.JDialog {
         lbGender = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Register");
         setResizable(false);
 
         lbName.setText("Name");
@@ -217,6 +216,7 @@ public class Register extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void keyPress(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPress

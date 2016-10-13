@@ -28,7 +28,6 @@ public class UpdateRecord extends javax.swing.JDialog {
         BGToolkit.setBackground(this);
         initComponents();
         setModal(true);
-        setLocationRelativeTo(null);
         rid = (int) db.get(0);
         txtDate.setText((String) db.get(4));
         txtNote.setText((String) db.get(5));
@@ -67,7 +66,7 @@ public class UpdateRecord extends javax.swing.JDialog {
         lbDateFormat = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add New Record");
+        setTitle("Edit Record");
         setResizable(false);
 
         lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/logo.png"))); // NOI18N
@@ -105,7 +104,7 @@ public class UpdateRecord extends javax.swing.JDialog {
             }
         });
 
-        lbDateFormat.setText("YYYY-MM-DD");
+        lbDateFormat.setText("DD-MM-YYYY");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,6 +181,7 @@ public class UpdateRecord extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -198,7 +198,6 @@ public class UpdateRecord extends javax.swing.JDialog {
          * format date: yyyy-MM-dd to database
          */
         date = BGToolkit.convertToServer(date);
-        System.out.println(date);
         /**
          * format amount
          */
@@ -221,7 +220,6 @@ public class UpdateRecord extends javax.swing.JDialog {
         try {
             edit = RecordDAO.editRecord(rid, date, amount, type, note);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             btnEditActionPerformed(null);
             return;
         }

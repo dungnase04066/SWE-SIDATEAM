@@ -7,12 +7,12 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Add New Record"/>
+    <Property name="title" type="java.lang.String" value="Edit Record"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -199,7 +199,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbDateFormat">
       <Properties>
-        <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
+        <Property name="text" type="java.lang.String" value="DD-MM-YYYY"/>
       </Properties>
     </Component>
   </SubComponents>
