@@ -23,8 +23,8 @@ public class Login extends javax.swing.JFrame {
     BGToolkit bgtToolkit = new BGToolkit();
 
     public Login() {
-        initComponents();
         BGToolkit.setBackground(this);
+        initComponents();
         setLocationRelativeTo(null);
         setTitle("Login");
     }

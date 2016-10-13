@@ -25,6 +25,7 @@ public class UpdateRecord extends javax.swing.JDialog {
      * Creates new form NewRecords
      */
     public UpdateRecord(Vector db) {
+        BGToolkit.setBackground(this);
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);

@@ -23,6 +23,7 @@ public class Register extends javax.swing.JDialog {
     BGToolkit bgtTookit = new BGToolkit();
 
     public Register() {
+        BGToolkit.setBackground(this);
         initComponents();
         setModal(true);
         setTitle("Register");

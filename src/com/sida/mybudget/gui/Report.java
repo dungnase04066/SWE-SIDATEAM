@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.RecordDAO;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -23,6 +24,7 @@ public class Report extends javax.swing.JDialog {
      * Creates new form Report
      */
     public Report() {
+        BGToolkit.setBackground(this);
         setModal(true);
         initComponents();
         setLocationRelativeTo(null);

@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.Data;
 
 /**
@@ -17,6 +18,7 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     public MainMenu() {
+        BGToolkit.setBackground(this);
         initComponents();
         setTitle("My Budget");
         setLocationRelativeTo(null);

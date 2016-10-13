@@ -20,6 +20,7 @@ public class ForgotPassword extends javax.swing.JDialog {
      * Creates new form ForgotPassword
      */
     public ForgotPassword() {
+        BGToolkit.setBackground(this);
         setModal(true);
         setTitle("Forgot password");
         initComponents();

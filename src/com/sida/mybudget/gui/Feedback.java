@@ -21,6 +21,7 @@ public class Feedback extends javax.swing.JDialog {
      * Creates new form Feedback
      */
     public Feedback() {
+        BGToolkit.setBackground(this);
         setModal(true);
         initComponents();
         setTitle("Feedback");

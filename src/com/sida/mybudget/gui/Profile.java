@@ -20,6 +20,7 @@ public class Profile extends javax.swing.JDialog {
      * Creates new form Profile
      */
     public Profile() {
+        BGToolkit.setBackground(this);
         initComponents();
         setModal(true);
         setLocationRelativeTo(this);

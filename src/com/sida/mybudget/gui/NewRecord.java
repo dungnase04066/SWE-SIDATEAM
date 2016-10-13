@@ -22,6 +22,7 @@ public class NewRecord extends javax.swing.JDialog {
      * Creates new form NewRecords
      */
     public NewRecord() {
+        BGToolkit.setBackground(this);
         initComponents();
         setModal(true);
         setLocationRelativeTo(null);

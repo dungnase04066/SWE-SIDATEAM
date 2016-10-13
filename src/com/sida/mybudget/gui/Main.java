@@ -5,6 +5,7 @@
  */
 package com.sida.mybudget.gui;
 
+import com.sida.mybudget.bo.BGToolkit;
 import com.sida.mybudget.dao.Data;
 import java.sql.Connection;
 
@@ -20,6 +21,7 @@ public class Main extends javax.swing.JFrame {
     static Connection conn;
 
     public Main() {
+        BGToolkit.setBackground(this);
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Loading...");

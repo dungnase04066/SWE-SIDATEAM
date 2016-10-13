@@ -21,6 +21,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.xml.bind.DatatypeConverter;
@@ -215,7 +216,20 @@ public class BGToolkit {
                 }
             });
         } catch (Exception e) {
-            System.out.println(jFrame.getClass().getResource("/com/sida/mybudget/asset/background.jpg").getFile());
+            
+        }
+    }
+    
+    public static void setBackground(JDialog jDialog) {
+        try {
+            Image backgroundImage = ImageIO.read(new File(jDialog.getClass().getResource("/com/sida/mybudget/asset/background.jpg").getFile()));
+            jDialog.setContentPane(new JPanel(new BorderLayout()) {
+                public void paintComponent(Graphics g) {
+                    g.drawImage(backgroundImage, 0, 0, null);
+                }
+            });
+        } catch (Exception e) {
+            
         }
     }
 }
