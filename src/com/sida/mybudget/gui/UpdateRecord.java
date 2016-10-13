@@ -58,12 +58,13 @@ public class UpdateRecord extends javax.swing.JDialog {
         lbNote = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         txtAmount = new javax.swing.JTextField();
-        txtNote = new javax.swing.JTextField();
         rbtIncome = new javax.swing.JRadioButton();
         rbtExpense = new javax.swing.JRadioButton();
         btnEdit = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         lbDateFormat = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtNote = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Record");
@@ -124,6 +125,12 @@ public class UpdateRecord extends javax.swing.JDialog {
 
         lbDateFormat.setText("DD-MM-YYYY");
 
+        txtNote.setColumns(20);
+        txtNote.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        txtNote.setLineWrap(true);
+        txtNote.setRows(5);
+        jScrollPane1.setViewportView(txtNote);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,9 +141,9 @@ public class UpdateRecord extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(lbTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbDate)
                                     .addComponent(lbNote)
@@ -149,20 +156,25 @@ public class UpdateRecord extends javax.swing.JDialog {
                                         .addComponent(rbtIncome)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rbtExpense))
-                                    .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNote))
+                                    .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbDateFormat))
+                                .addComponent(lbDateFormat)
+                                .addGap(0, 16, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(101, 101, 101)
+                                .addGap(21, 21, 21)
                                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)))))
                 .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(lbLogo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(lbLogo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,14 +201,14 @@ public class UpdateRecord extends javax.swing.JDialog {
                             .addComponent(rbtExpense)
                             .addComponent(lbType))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbNote))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNote)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,6 +216,9 @@ public class UpdateRecord extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Do you want to update record?","Confirm",JOptionPane.YES_NO_OPTION)==JOptionPane.NO_OPTION) {
+            return;
+        }
         double amount = 0;
         String date = txtDate.getText().trim();
         int type = rbtIncome.isSelected() ? 1 : 0;
@@ -243,7 +258,7 @@ public class UpdateRecord extends javax.swing.JDialog {
             return;
         }
         if (edit) {
-            JOptionPane.showMessageDialog(null, "Edit records successful!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Edit record successfully!", "Message", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -277,6 +292,7 @@ public class UpdateRecord extends javax.swing.JDialog {
     private javax.swing.ButtonGroup btgType;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAmount;
     private javax.swing.JLabel lbDate;
     private javax.swing.JLabel lbDateFormat;
@@ -288,6 +304,6 @@ public class UpdateRecord extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtIncome;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtNote;
+    private javax.swing.JTextArea txtNote;
     // End of variables declaration//GEN-END:variables
 }

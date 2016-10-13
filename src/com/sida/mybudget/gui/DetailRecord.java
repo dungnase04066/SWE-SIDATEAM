@@ -31,7 +31,7 @@ public class DetailRecord extends javax.swing.JDialog {
     private void init() {
         txtDate.setText(get.get(4).toString());
         txtAmount.setText(get.get(2).toString());
-        txtType.setText(get.get(3).toString());
+        txtType.setText(((boolean) get.get(3)) ? "Income" : "Expense");
         txtNote.setText(get.get(5).toString());
     }
 
@@ -52,11 +52,13 @@ public class DetailRecord extends javax.swing.JDialog {
         txtDate = new javax.swing.JLabel();
         txtAmount = new javax.swing.JLabel();
         txtType = new javax.swing.JLabel();
-        txtNote = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtNote = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Detail");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Date:");
@@ -81,15 +83,31 @@ public class DetailRecord extends javax.swing.JDialog {
         txtType.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtType.setText("jLabel9");
 
-        txtNote.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtNote.setText("jLabel10");
-
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close1.png"))); // NOI18N
         jButton1.setText("Close");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        txtNote.setEditable(false);
+        txtNote.setBackground(new java.awt.Color(240, 240, 240));
+        txtNote.setColumns(20);
+        txtNote.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNote.setLineWrap(true);
+        txtNote.setRows(5);
+        txtNote.setBorder(null);
+        txtNote.setEnabled(false);
+        jScrollPane2.setViewportView(txtNote);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,7 +117,7 @@ public class DetailRecord extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -112,13 +130,13 @@ public class DetailRecord extends javax.swing.JDialog {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtDate)
-                                    .addComponent(txtNote)
                                     .addComponent(txtType)
-                                    .addComponent(txtAmount)))
+                                    .addComponent(txtAmount)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(93, 93, 93)
                                 .addComponent(jLabel6)))
-                        .addGap(0, 85, Short.MAX_VALUE)))
+                        .addGap(0, 44, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -139,11 +157,13 @@ public class DetailRecord extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(txtType))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtNote))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -155,10 +175,17 @@ public class DetailRecord extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close1.png"))); // NOI18N
+    }//GEN-LAST:event_jButton1MouseReleased
+
+    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close2.png"))); // NOI18N
+    }//GEN-LAST:event_jButton1MousePressed
+
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -167,9 +194,10 @@ public class DetailRecord extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel txtAmount;
     private javax.swing.JLabel txtDate;
-    private javax.swing.JLabel txtNote;
+    private javax.swing.JTextArea txtNote;
     private javax.swing.JLabel txtType;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,12 +46,13 @@ public class NewRecord extends javax.swing.JDialog {
         lbNote = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         txtAmount = new javax.swing.JTextField();
-        txtNote = new javax.swing.JTextField();
         rbtIncome = new javax.swing.JRadioButton();
         rbtExpense = new javax.swing.JRadioButton();
         btnAdd = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         lbDateFormat = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtNote = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add New Record");
@@ -110,7 +111,13 @@ public class NewRecord extends javax.swing.JDialog {
             }
         });
 
-        lbDateFormat.setText("YYYY-MM-DD");
+        lbDateFormat.setText("DD-MM-YYYY");
+
+        txtNote.setColumns(20);
+        txtNote.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        txtNote.setLineWrap(true);
+        txtNote.setRows(5);
+        jScrollPane1.setViewportView(txtNote);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,7 +145,7 @@ public class NewRecord extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rbtExpense))
                                     .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNote))
+                                    .addComponent(jScrollPane1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbDateFormat))
                             .addGroup(layout.createSequentialGroup()
@@ -146,7 +153,7 @@ public class NewRecord extends javax.swing.JDialog {
                                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(67, 67, 67)
                                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
@@ -177,9 +184,9 @@ public class NewRecord extends javax.swing.JDialog {
                             .addComponent(rbtExpense)
                             .addComponent(lbType))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbNote))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNote)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,6 +199,9 @@ public class NewRecord extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Do you want to add new record?","Confirm",JOptionPane.YES_NO_OPTION)==JOptionPane.NO_OPTION) {
+            return;
+        }
         double amount = 0;
         String date = txtDate.getText().trim();
         int type = rbtIncome.isSelected() ? 1 : 0;
@@ -233,7 +243,7 @@ public class NewRecord extends javax.swing.JDialog {
             return;
         }
         if (add) {
-            JOptionPane.showMessageDialog(null, "Add records successful!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Add record successfully!", "Message", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Some thing wrong!", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -268,6 +278,7 @@ public class NewRecord extends javax.swing.JDialog {
     private javax.swing.ButtonGroup btgType;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAmount;
     private javax.swing.JLabel lbDate;
     private javax.swing.JLabel lbDateFormat;
@@ -279,6 +290,6 @@ public class NewRecord extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtIncome;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtNote;
+    private javax.swing.JTextArea txtNote;
     // End of variables declaration//GEN-END:variables
 }

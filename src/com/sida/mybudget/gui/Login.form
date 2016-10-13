@@ -127,6 +127,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/sida/mybudget/asset/login.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Login"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>

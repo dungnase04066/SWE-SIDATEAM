@@ -49,48 +49,102 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("My Budget");
 
+        btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/report1.png"))); // NOI18N
         btnReport.setText("Report");
         btnReport.setFocusable(false);
+        btnReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnReportMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnReportMouseReleased(evt);
+            }
+        });
         btnReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReportActionPerformed(evt);
             }
         });
 
+        btnRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/recordmain1.png"))); // NOI18N
         btnRecord.setText("Record");
         btnRecord.setFocusable(false);
+        btnRecord.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnRecordMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnRecordMouseReleased(evt);
+            }
+        });
         btnRecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecordActionPerformed(evt);
             }
         });
 
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/new1.png"))); // NOI18N
         btnNew.setText("New");
         btnNew.setFocusable(false);
+        btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnNewMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnNewMouseReleased(evt);
+            }
+        });
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
             }
         });
 
+        btnProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/profile1.png"))); // NOI18N
         btnProfile.setText("Profile");
         btnProfile.setFocusable(false);
+        btnProfile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnProfileMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnProfileMouseReleased(evt);
+            }
+        });
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfileActionPerformed(evt);
             }
         });
 
+        btnFeedback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/feedback1.png"))); // NOI18N
         btnFeedback.setText("Feedback");
         btnFeedback.setFocusable(false);
+        btnFeedback.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnFeedbackMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnFeedbackMouseReleased(evt);
+            }
+        });
         btnFeedback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFeedbackActionPerformed(evt);
             }
         });
 
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/exit1.png"))); // NOI18N
         btnExit.setText("Exit");
         btnExit.setFocusable(false);
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnExitMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnExitMouseReleased(evt);
+            }
+        });
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -113,11 +167,11 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFeedback, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRecord, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                            .addComponent(btnRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,6 +226,54 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
         new Report();
     }//GEN-LAST:event_btnReportActionPerformed
+
+    private void btnReportMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMousePressed
+        btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/report2.png"))); // NOI18N
+    }//GEN-LAST:event_btnReportMousePressed
+
+    private void btnReportMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseReleased
+        btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/report1.png"))); // NOI18N
+    }//GEN-LAST:event_btnReportMouseReleased
+
+    private void btnRecordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecordMouseReleased
+        btnRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/recordmain1.png"))); // NOI18N
+    }//GEN-LAST:event_btnRecordMouseReleased
+
+    private void btnRecordMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRecordMousePressed
+        btnRecord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/recordmain2.png"))); // NOI18N
+    }//GEN-LAST:event_btnRecordMousePressed
+
+    private void btnNewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseReleased
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/new1.png"))); // NOI18N
+    }//GEN-LAST:event_btnNewMouseReleased
+
+    private void btnNewMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMousePressed
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/new2.png"))); // NOI18N
+    }//GEN-LAST:event_btnNewMousePressed
+
+    private void btnProfileMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfileMouseReleased
+        btnProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/profile1.png"))); // NOI18N
+    }//GEN-LAST:event_btnProfileMouseReleased
+
+    private void btnProfileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfileMousePressed
+        btnProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/profile2.png"))); // NOI18N
+    }//GEN-LAST:event_btnProfileMousePressed
+
+    private void btnFeedbackMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFeedbackMouseReleased
+        btnFeedback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/feedback1.png"))); // NOI18N
+    }//GEN-LAST:event_btnFeedbackMouseReleased
+
+    private void btnFeedbackMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFeedbackMousePressed
+        btnFeedback.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/feedback2.png"))); // NOI18N
+    }//GEN-LAST:event_btnFeedbackMousePressed
+
+    private void btnExitMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseReleased
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/exit1.png"))); // NOI18N
+    }//GEN-LAST:event_btnExitMouseReleased
+
+    private void btnExitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMousePressed
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/exit2.png"))); // NOI18N
+    }//GEN-LAST:event_btnExitMousePressed
 
     /**
      * @param args the command line arguments

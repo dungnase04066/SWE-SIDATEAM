@@ -39,12 +39,12 @@
                           <Component id="btnProfile" min="-2" pref="100" max="-2" attributes="0"/>
                           <Component id="btnReport" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnFeedback" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="btnRecord" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnRecord" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnFeedback" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="btnExit" min="-2" pref="100" max="-2" attributes="0"/>
                           <Component id="btnNew" min="-2" pref="100" max="-2" attributes="0"/>
@@ -100,55 +100,85 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnReport">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/sida/mybudget/asset/report1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Report"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnReportMousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnReportMouseReleased"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRecord">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/sida/mybudget/asset/recordmain1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Record"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRecordMousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRecordMouseReleased"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecordActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnNew">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/sida/mybudget/asset/new1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="New"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNewMousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNewMouseReleased"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnProfile">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/sida/mybudget/asset/profile1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Profile"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProfileMousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProfileMouseReleased"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProfileActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFeedback">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/sida/mybudget/asset/feedback1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Feedback"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnFeedbackMousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnFeedbackMouseReleased"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFeedbackActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExit">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/sida/mybudget/asset/exit1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Exit"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnExitMousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnExitMouseReleased"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
       </Events>
     </Component>

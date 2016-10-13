@@ -68,6 +68,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/login.png"))); // NOI18N
         btnLogin.setText("Login");
         btnLogin.setFocusable(false);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
