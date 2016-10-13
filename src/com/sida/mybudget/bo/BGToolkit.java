@@ -205,6 +205,18 @@ public class BGToolkit {
         }
         return true;
     }
+/**
+ * feedback have more than 10 character
+ * @param feedback
+ * @return 
+ */
+    public static boolean checkFeedback(String feedback) {
+        int n = feedback.length();
+        if (n < 10) {
+            return false;
+        }
+        return true;
+    }
 
     public static void setBackground(JFrame jFrame) {
         try {
@@ -215,10 +227,10 @@ public class BGToolkit {
                 }
             });
         } catch (Exception e) {
-            
+
         }
     }
-    
+
     public static void setBackground(JDialog jDialog) {
         try {
             Image backgroundImage = ImageIO.read(jDialog.getClass().getResource("/com/sida/mybudget/asset/background.png"));
@@ -228,7 +240,7 @@ public class BGToolkit {
                 }
             });
         } catch (Exception e) {
-            
+
         }
     }
 
@@ -236,6 +248,7 @@ public class BGToolkit {
         date = date.substring(8, 10) + "-" + date.substring(5, 7) + "-" + date.substring(0, 4);
         return date;
     }
+
     public static String convertToServer(String date) {
         date = date.substring(6, 10) + "-" + date.substring(3, 5) + "-" + date.substring(0, 2);
         return date;

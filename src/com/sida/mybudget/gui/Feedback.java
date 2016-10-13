@@ -120,7 +120,12 @@ public class Feedback extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        String feedback = txtFeedback.getText();
+        String feedback = txtFeedback.getText().trim();
+        
+      if(!BGToolkit.checkFeedback(feedback)){
+          JOptionPane.showMessageDialog(null, "Please! Enter more than 10 character.", "Error", JOptionPane.ERROR_MESSAGE);
+          return;
+      }
         try {
             feedback = URLEncoder.encode(feedback, "UTF-8");
             String mess = BGToolkit.HTTPPostRequest(Data.getBaseURL() + "feedback.php", "pass=dungdeptrai&id=" + Integer.toString(Data.getUser().getUid()) + "&feedback=" + feedback);
