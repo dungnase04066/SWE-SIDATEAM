@@ -107,14 +107,32 @@ public class Profile extends javax.swing.JDialog {
         lbTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTitle.setText("Account Management");
 
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/update.png"))); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnUpdateMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnUpdateMouseReleased(evt);
+            }
+        });
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
 
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close1.png"))); // NOI18N
         btnClose.setText("Close");
+        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCloseMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCloseMouseReleased(evt);
+            }
+        });
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -128,12 +146,14 @@ public class Profile extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
                                 .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53))
                             .addComponent(lbTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +169,7 @@ public class Profile extends javax.swing.JDialog {
                                         .addComponent(rbtMale)
                                         .addGap(47, 47, 47)
                                         .addComponent(rbtFemale)
-                                        .addGap(0, 80, Short.MAX_VALUE))
+                                        .addGap(0, 62, Short.MAX_VALUE))
                                     .addComponent(txtName)
                                     .addComponent(txtEmail)
                                     .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -157,15 +177,14 @@ public class Profile extends javax.swing.JDialog {
                                     .addComponent(txtReNewPass)
                                     .addComponent(txtCurrentPass)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(136, 136, 136)
-                                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lbGender)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(40, 40, 40)
+                        .addComponent(lbGender)
+                        .addGap(0, 327, Short.MAX_VALUE)))
+                .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logo)
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,8 +224,8 @@ public class Profile extends javax.swing.JDialog {
                     .addComponent(txtCurrentPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnClose))
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -259,6 +278,22 @@ public class Profile extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Connection Lost!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnUpdateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMousePressed
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/update2.png"))); // NOI18N
+    }//GEN-LAST:event_btnUpdateMousePressed
+
+    private void btnUpdateMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateMouseReleased
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/update.png"))); // NOI18N
+    }//GEN-LAST:event_btnUpdateMouseReleased
+
+    private void btnCloseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMousePressed
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close2.png"))); // NOI18N
+    }//GEN-LAST:event_btnCloseMousePressed
+
+    private void btnCloseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseReleased
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close1.png"))); // NOI18N
+    }//GEN-LAST:event_btnCloseMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgGender;

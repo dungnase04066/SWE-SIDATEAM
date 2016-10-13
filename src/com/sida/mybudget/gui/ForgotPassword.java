@@ -67,16 +67,34 @@ public class ForgotPassword extends javax.swing.JDialog {
             }
         });
 
+        btnOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/ok1.png"))); // NOI18N
         btnOK.setText("OK");
         btnOK.setFocusable(false);
+        btnOK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnOKMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnOKMouseReleased(evt);
+            }
+        });
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOKActionPerformed(evt);
             }
         });
 
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close1.png"))); // NOI18N
         btnClose.setText("Close");
         btnClose.setFocusable(false);
+        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCloseMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCloseMouseReleased(evt);
+            }
+        });
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -94,7 +112,7 @@ public class ForgotPassword extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,17 +123,19 @@ public class ForgotPassword extends javax.swing.JDialog {
                                     .addComponent(txtEmail)
                                     .addComponent(txtUser)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
                                 .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 90, Short.MAX_VALUE))
+                                .addGap(29, 29, 29)
+                                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 34, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(40, 40, 40))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +143,7 @@ public class ForgotPassword extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbUser)
@@ -134,8 +154,8 @@ public class ForgotPassword extends javax.swing.JDialog {
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOK)
-                    .addComponent(btnClose))
+                    .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -161,6 +181,22 @@ public class ForgotPassword extends javax.swing.JDialog {
             btnCloseActionPerformed(null);
         }
     }//GEN-LAST:event_keyPressed
+
+    private void btnCloseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMousePressed
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close2.png"))); // NOI18N
+    }//GEN-LAST:event_btnCloseMousePressed
+
+    private void btnCloseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseReleased
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close1.png"))); // NOI18N
+    }//GEN-LAST:event_btnCloseMouseReleased
+
+    private void btnOKMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOKMousePressed
+        btnOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/ok2.png"))); // NOI18N
+    }//GEN-LAST:event_btnOKMousePressed
+
+    private void btnOKMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOKMouseReleased
+        btnOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/ok1.png"))); // NOI18N
+    }//GEN-LAST:event_btnOKMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
