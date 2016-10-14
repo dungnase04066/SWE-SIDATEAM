@@ -96,7 +96,7 @@ public class Report extends javax.swing.JDialog {
         lbIncome.setText("Income: ");
 
         lbExpense.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lbExpense.setForeground(new java.awt.Color(255, 204, 0));
+        lbExpense.setForeground(new java.awt.Color(51, 51, 0));
         lbExpense.setText("Expense:");
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/sida/mybudget/asset/close1.png"))); // NOI18N

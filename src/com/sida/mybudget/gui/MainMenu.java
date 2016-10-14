@@ -6,6 +6,8 @@
 package com.sida.mybudget.gui;
 
 import com.sida.mybudget.bo.BGToolkit;
+import com.sida.mybudget.dao.Data;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -204,7 +206,12 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        System.exit(0);
+        if (JOptionPane.showConfirmDialog(null, "Do you want to logout", "Message", JOptionPane.YES_NO_OPTION) == JOptionPane.NO_OPTION) {
+            return;
+        }
+        Data.setUser(null);
+        this.dispose();
+        Login.main(null);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeedbackActionPerformed
